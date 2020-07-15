@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<style>
+.buttons {
+  background-color: #4CAF70;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+<body>
+<h1><center>Music Player</center><h1>
+<audio id="myAudio">
+  <source src="y2mate.com - Warcraft OST - The Horde (Movie Intro Theme)_rLUIYhwHAwE (1).mp3" type="audio/mpeg">
+</audio>
+<center>
+<button class="buttons button1" onclick="playAudio()" type="button">Play Audio</button>
+<button class="buttons button1" onclick="pauseAudio()" type="button">Pause Audio</button> 
+<button class="buttons button1" onclick="loadAudio()" type="button">Stop</button>
+<button class="buttons button1" onclick="seekAudio()" type="button">Seek 20 seconds</button>
+</center>
+<script>
+	var x = document.getElementById("myAudio");
+	var f;
+	function seekAudio() { 
+  		x.currentTime=(x.currentTime+20); 
+	} 
+	function playAudio() {
+  		x.play();
+		f=1;
+		set(f);
+	} 
+	function pauseAudio() {
+		f=0; 
+  		x.pause();
+		set(f); 
+	} 
+	function loadAudio() {   
+		f=0;
+		x.load();
+		set(f);
+	}
+	function set(x) {
+		if(x==1){
+ 			var setId=setInterval(setc,3000);	
+		}
+		else{
+			clearInterval(setId);
+			document.body.style.backgroundColor = "#FFFFFF";
+		}
+	}
+	function setc(){
+  	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+  	document.body.style.backgroundColor = "#"+randomColor;
+	}
+</script>
+</body>
+</html>
